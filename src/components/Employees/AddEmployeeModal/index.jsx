@@ -8,7 +8,6 @@ export const AddEmployeeModal = ({ addNewEmployee, onClose }) => {
   let [email, setEmail] = useState('');
 
   const onAddEmployeeHandler = () => {
-    console.log('add')
     addNewEmployee({first_name: name, last_name: lastName, email: email});
     onClose();
   }
@@ -20,15 +19,15 @@ export const AddEmployeeModal = ({ addNewEmployee, onClose }) => {
           &times;
         </button>
         <div>
-          <input type='text' placeholder='Enter first name' id='name' value={name} onChange={(e) => setName(e.target.value)}/>
+          <input placeholder='Enter first name' id='name' value={name} onChange={(e) => setName(e.target.value)}/>
           <label htmlFor ='name'>First name</label>
         </div>
         <div>
-          <input type='text' placeholder='Enter last name' id='last_name' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+          <input placeholder='Enter last name' id='last_name' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
           <label htmlFor ='last_name'>Last name</label>
         </div>
         <div>
-          <input type='text' placeholder='Enter email' id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input placeholder='Enter email' id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
           <label htmlFor ='email'>Email</label>
         </div>
         <button onClick={onAddEmployeeHandler}>Добавить пользователя</button>

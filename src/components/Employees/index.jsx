@@ -3,7 +3,7 @@ import { EmployeesList } from './EmployeesList';
 import { AddEmployeeModal } from './AddEmployeeModal';
 import './index.css';
 
-let url = 'https://reqres.in/api/users?per_page=12';
+let usersListUrl = 'https://reqres.in/api/users?per_page=12';
 
 export const Employees = () => {
   let [employeesArray, setEmployeesArray] = useState([]);
@@ -12,9 +12,8 @@ export const Employees = () => {
   let [isAddEmployeeModalOpen, setIsAddEmployeeModalOpen] = useState(false);
 
   useEffect(() => {
-    console.log('mount')
     setIsLoading(true);
-    fetch(url).then(res => res.json()).then(res => {
+    fetch(usersListUrl).then(res => res.json()).then(res => {
       if(res?.data) {
         setEmployeesArray(res.data)
       }
@@ -23,11 +22,10 @@ export const Employees = () => {
       setError(error)
     })
     .finally(() => setIsLoading(false));
-
   }, [])
 
   const deleteEmployee = (index) => {
-    let employeesArrayCopy = [...employeesArray]
+    let employeesArrayCopy = [...employeesArray];
     employeesArrayCopy.splice(index, 1);
     setEmployeesArray(employeesArrayCopy);
     //mutate list in API

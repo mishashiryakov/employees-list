@@ -1,9 +1,7 @@
 import React from 'react';
 import './index.css';
 
-export const EmployeesList = ({ list, deleteEmployee }) => {
-  console.log('list', list)
-  return (
+export const EmployeesList = ({ list, deleteEmployee }) => (
     <ul>
       {list.map((employee, index) => 
         <li key={employee.id} className='listItem'>
@@ -14,5 +12,4 @@ export const EmployeesList = ({ list, deleteEmployee }) => {
         </li>
       )}
     </ul>
-  )
-}
+)
