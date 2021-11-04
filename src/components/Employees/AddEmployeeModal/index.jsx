@@ -8,12 +8,12 @@ export const AddEmployeeModal = ({ addNewEmployee, onClose }) => {
   let [email, setEmail] = useState('');
 
   const onAddEmployeeHandler = () => {
-    addNewEmployee({first_name: name, last_name: lastName, email: email});
+    addNewEmployee({first_name: name, last_name: lastName, email});
     onClose();
   }
 
   return (
-    <div id='myModal' className='modal'>
+    <div className='modal'>
       <div className='modal-content'>
         <button onClick={onClose} className='close'>
           &times;

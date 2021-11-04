@@ -44,11 +44,11 @@ export const Employees = () => {
       { 
         isLoading
           ? <p>Список сотрудников загружается</p>
-          : !error
-            ? employeesArray.length
+          : error
+            ? <p>Ошибка при загрузке данных: {error.message}</p>
+            : employeesArray.length
               ? <EmployeesList list={employeesArray} deleteEmployee={deleteEmployee} />
               : <p>Список сотрудников пуст</p>
-            : <p>Ошибка при загрузке данных: {error.message}</p>
       }
       {
         isAddEmployeeModalOpen
