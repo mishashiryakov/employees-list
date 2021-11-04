@@ -19,15 +19,15 @@ export const AddEmployeeModal = ({ addNewEmployee, onClose }) => {
           &times;
         </button>
         <div>
-          <input placeholder='Enter first name' id='name' value={name} onChange={(e) => setName(e.target.value)}/>
+          <input placeholder='First name' id='name' value={name} onChange={(e) => setName(e.target.value)}/>
           <label htmlFor ='name'>First name</label>
         </div>
         <div>
-          <input placeholder='Enter last name' id='last_name' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+          <input placeholder='Last name' id='last_name' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
           <label htmlFor ='last_name'>Last name</label>
         </div>
         <div>
-          <input placeholder='Enter email' id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input placeholder='Email' id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
           <label htmlFor ='email'>Email</label>
         </div>
         <button onClick={onAddEmployeeHandler}>Добавить пользователя</button>

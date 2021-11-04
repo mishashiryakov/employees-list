@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { EmployeesList } from './EmployeesList';
 import { AddEmployeeModal } from './AddEmployeeModal';
+import { makeRequest } from '../../utils/makeRequest';
 import './index.css';
 
-let usersListUrl = 'https://reqres.in/api/users?per_page=12';
+const USERS_LIST_URL = 'https://reqres.in/api/users?per_page=12';
 
 export const Employees = () => {
   let [employeesArray, setEmployeesArray] = useState([]);
@@ -13,15 +14,18 @@ export const Employees = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(usersListUrl).then(res => res.json()).then(res => {
-      if(res?.data) {
-        setEmployeesArray(res.data)
-      }
-    })
-    .catch(error => {
-      setError(error)
-    })
-    .finally(() => setIsLoading(false));
+    makeRequest(USERS_LIST_URL)
+      .then(res => {
+        if(res?.data) {
+          setEmployeesArray(res.data)
+        } else {
+          setError(new Error('отсутствует нужное поле'))
+        }
+      })
+      .catch(error => {
+        setError(error)
+      })
+      .finally(() => setIsLoading(false));
   }, [])
 
   const deleteEmployee = (index) => {
@@ -33,7 +37,7 @@ export const Employees = () => {
 
   const addNewEmployee = (employee) => {
     employee.id = employeesArray[employeesArray.length - 1].id + 1;
-    setEmployeesArray(prev => [...prev, employee]);
+    setEmployeesArray([...employeesArray, employee]);
     //mutate list in API
   }
 
